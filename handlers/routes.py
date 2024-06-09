@@ -10,13 +10,14 @@ def configure_routes(app):
     # Define the maximum allowed total folder size in bytes (e.g., 100 MB)
     MAX_FOLDER_SIZE_BYTES = 10000 * 1024 * 1024  # 10 GB
     current_date = datetime.now().strftime('%d.%m.%y')
+    '''
     with open("main.json", "r", encoding="utf-8") as file:
         ascii_json = json.load(file)
     kabluki = ascii_json["kabluki"]
-
+    '''
     @app.route('/')
     def index():
-        return render_template('index.html', kabluki=kabluki)
+        return render_template('index.html', kabluki="meow")
 
     @app.route('/status')
     def status():
