@@ -1,3 +1,4 @@
+import json
 from flask import render_template
 from datetime import datetime
 from modules import modules
@@ -9,12 +10,13 @@ def configure_routes(app):
     # Define the maximum allowed total folder size in bytes (e.g., 100 MB)
     MAX_FOLDER_SIZE_BYTES = 10000 * 1024 * 1024  # 10 GB
     current_date = datetime.now().strftime('%d.%m.%y')
+    with open("main.json", "r", encoding="utf-8") as file:
+        ascii_json = json.load(file)
+    kabluki = ascii_json["kabluki"]
 
-    @app.route("/")
+    @app.route('/')
     def index():
-        hello = modules.hello()
-        content = modules.content()
-        return render_template("index.html", hello=hello, content=content)
+        return render_template('index.html', kabluki=kabluki)
 
     @app.route('/status')
     def status():
