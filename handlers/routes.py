@@ -1,4 +1,5 @@
 import json
+import os
 from flask import render_template
 from datetime import datetime
 from modules import modules
@@ -15,9 +16,14 @@ def configure_routes(app):
         ascii_json = json.load(file)
     kabluki = ascii_json["kabluki"]
     '''
+    json_path = os.path.join(os.path.dirname(__file__), 'data', 'ascii.json')
+    with open(json_path) as json_file:
+        ascii_json = json.load(json_file)
+    kabluki = ascii_json["kabluki"]
+
     @app.route('/')
     def index():
-        return render_template('index.html', kabluki="meow")
+        return render_template('index.html', kabluki=kabluki)
 
     @app.route('/status')
     def status():
