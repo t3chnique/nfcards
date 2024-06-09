@@ -11,8 +11,11 @@ def content():
             '''
 
 
+'''
+
 def file_size():
     # Define the maximum allowed file size in bytes (e.g., 10 MB)
     MAX_FILE_SIZE_BYTES = 1000 * 1024 * 1024  # 1 GB
     # Define the maximum allowed total folder size in bytes (e.g., 100 MB)
     MAX_FOLDER_SIZE_BYTES = 10000 * 1024 * 1024  # 10 GB
+'''

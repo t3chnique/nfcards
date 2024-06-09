@@ -12,8 +12,10 @@ def configure_routes(app):
 
     @app.route('/status')
     def status():
-        MAX_FILE_SIZE_BYTES = modules.file_size()
-        MAX_FOLDER_SIZE_BYTES = modules.file_size()
+        # Define the maximum allowed file size in bytes (e.g., 10 MB)
+        MAX_FILE_SIZE_BYTES = 1000 * 1024 * 1024  # 1 GB
+        # Define the maximum allowed total folder size in bytes (e.g., 100 MB)
+        MAX_FOLDER_SIZE_BYTES = 10000 * 1024 * 1024  # 10 GB
         current_date = datetime.now().strftime('%d.%m.%y')
         message = ""
         message += "Hello!"
