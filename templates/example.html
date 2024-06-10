@@ -19,19 +19,11 @@
             max-height: 95vh; /* Restrict max height to keep the video within viewport */
             border-radius: 8px; /* Slight rounding of corners for a modern look */
             box-shadow: 0 4px 8px rgba(0,0,0,0.5); /* Subtle shadow for a lifted effect */
-        }
-        /* Custom style for video controls */
-        iframe::-webkit-media-controls {
-            border-radius: 10px;
-        }
-        iframe::-webkit-media-controls-play-button,
-        iframe::-webkit-media-controls-panel {
-            color: white;
+            border: none; /* Remove default border */
         }
     </style>
 </head>
 <body>
-    <iframe src="https://streamable.com/e/ry1die?autoplay=1&nocontrols=1"></iframe>
-    </video>
+    <iframe src="https://streamable.com/e/ry1die?autoplay=1&nocontrols=1" width="600" height="400"></iframe>
 </body>
 </html>
