@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Successful Upload</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1, h3 {
+            text-align: center;
+            color: #222;
+        }
+        .message {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 16px;
+        }
+        a {
+            color: #007BFF; /* Bright blue to stand out more */
+            text-decoration: none;
+        }
+        a:hover {
+            color: #0056b3;
+            text-decoration: underline; /* Adds underline on hover for emphasis */
+        }
+        .links {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .ascii-art {
+            white-space: pre-wrap; /* Ensures that whitespace is preserved */
+            font-family: 'Courier New', monospace; /* Consistent font for ASCII art */
+            font-size: 7px; /* Adjust size as needed for alignment */
+            line-height: normal; /* Avoid extra space between lines */
+            margin: 20px auto;
+            width: 90%; /* Adjust width as needed */
+            text-align: left; /* Align text to the left */
+        }
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+            background-color: #666;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Video Upload Successful!</h1>
+    </header>
+    <p class="message">
+        Congratulations, your video has been successfully uploaded!
+        Your NFcard will be dispatched shortly.
+        You can view your video <a href="/videos/{{ filename }}" target="_blank">here</a>.
+    </p>
+    <div class="links">
+        <button onclick="location.href='https://t.me/nfca1d';">Check Our Telegram</button>
+        <div class="ascii-art">
+            {{ legla }}
+        </div>
+        <form action="/">
+            <button type="submit">Return to Main Menu</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,6 +1,7 @@
 # import json
-# import os
-from flask import render_template
+import os
+import uuid
+from flask import render_template, request, redirect, url_for
 from datetime import datetime
 # from modules import modules
 
@@ -40,23 +41,51 @@ def configure_routes(app):
                     f"{round(MAX_FILE_SIZE_BYTES/1000000/1000)} GB, "
                     "Folder size limit: "
                     f"{round(MAX_FOLDER_SIZE_BYTES/1000000/1000)} GB")
-        message += f"<br>ALLOWED_EXTENSIONS: {ALLOWED_EXTENSIONS}"
+        message += f"<br>Allowed_extensions: {ALLOWED_EXTENSIONS}"
         return message
 
     @app.route('/example', methods=['POST'])
     def example():
         return render_template('example.html')
 
-    '''
     def allowed_file(filename):
-        # Add other popular video formats as needed
-        ALLOWED_EXTENSIONS = {'avi', 'flv', 'wmv', 'mov', 'mp4',
-                              'm4v', 'mpeg', 'mpg', 'mkv', 'webm'}
-        return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-    '''
+        return '.' in filename and filename.rsplit('.', 1)[1].lower(
+            ) in ALLOWED_EXTENSIONS
 
-    @app.route('/test')
-    def testing():
-        message = ""
-        message += f"ALLOWED_EXTENSIONS: {ALLOWED_EXTENSIONS}"
-        return message
+    @app.route('/upload', methods=['POST'])
+    def upload_file():
+        error_message = "<br>try shorter video or "
+        "text us (https://t.me/levaau)"
+        if 'file' not in request.files:
+            return redirect(request.url)
+        file = request.files['file']
+        if file.filename == '':
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            # Calculate the total size of files in the uploads folder
+            total_folder_size = sum(os.path.getsize
+                                    (os.path.join(app.config[
+                                        'UPLOAD_FOLDER'], f))
+                                    for f in os.listdir
+                                    (app.config['UPLOAD_FOLDER']))
+            # Calculate the size of the new file
+            new_file_size = len(file.read())
+            # Check if adding the new file exceeds the maximum folder size
+            if total_folder_size + new_file_size > MAX_FOLDER_SIZE_BYTES:
+                return ('The total size of uploaded files exceeds the '
+                        'maximum allowed size '
+                        f'({round(MAX_FOLDER_SIZE_BYTES/1024/1024)} MB)'
+                        f'{error_message}')
+            # Check if the file size exceeds the maximum allowed size
+            if new_file_size > MAX_FILE_SIZE_BYTES:
+                return ('File size exceeds the maximum allowed size '
+                        f'({round(MAX_FILE_SIZE_BYTES/1024/1024)} MB)'
+                        f'{error_message}')
+            file_type = "video"
+            filename = current_date + file_type + str(uuid.uuid4()) + '.mp4'
+            file.seek(0)  # Reset file pointer to the beginning before saving
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            return redirect(url_for('congrats', filename=filename))
+            # return redirect(url_for('play_video', filename=filename))
+        else:
+            return 'Invalid file type'
