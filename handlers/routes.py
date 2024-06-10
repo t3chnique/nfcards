@@ -44,3 +44,18 @@ def configure_routes(app):
     @app.route('/example', methods=['POST'])
     def example():
         return render_template('example.html')
+
+    def allowed_file(filename):
+        # Add other popular video formats as needed
+        ALLOWED_EXTENSIONS = {'avi', 'flv', 'wmv', 'mov', 'mp4',
+                              'm4v', 'mpeg', 'mpg', 'mkv', 'webm'}
+        allowed_file(ALLOWED_EXTENSIONS)
+        return '.' in filename and filename.rsplit('.',
+                                                   1)[1].lower(
+                                                       ) in ALLOWED_EXTENSIONS
+
+    @app.route('/test')
+    def testing(ALLOWED_EXTENSIONS):
+        message = ""
+        message += f"ALLOWED_EXTENSIONS: {ALLOWED_EXTENSIONS}"
+        return message
