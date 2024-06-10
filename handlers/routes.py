@@ -36,12 +36,11 @@ def configure_routes(app):
         message += "Hello!"
         if current_date:
             message += "<br>current_date: works"
-        if status:
-            message += ("<br>File size limit: "
-                        f"{round(MAX_FILE_SIZE_BYTES/1000000/1000)} GB, "
-                        "Folder size limit: "
-                        f"{round(MAX_FOLDER_SIZE_BYTES/1000000/1000)} GB")
-        message += f"ALLOWED_EXTENSIONS: {ALLOWED_EXTENSIONS}"
+        message += ("<br>File size limit: "
+                    f"{round(MAX_FILE_SIZE_BYTES/1000000/1000)} GB, "
+                    "Folder size limit: "
+                    f"{round(MAX_FOLDER_SIZE_BYTES/1000000/1000)} GB")
+        message += f"<br>ALLOWED_EXTENSIONS: {ALLOWED_EXTENSIONS}"
         return message
 
     @app.route('/example', methods=['POST'])
