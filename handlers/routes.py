@@ -2,7 +2,7 @@ import json
 import os
 from flask import render_template
 from datetime import datetime
-from modules import modules
+# from modules import modules
 
 
 def configure_routes(app):
@@ -17,7 +17,7 @@ def configure_routes(app):
     kabluki = ascii_json["kabluki"]
     '''
     json_path = os.path.join(os.path.dirname(__file__), 'data', 'ascii.json')
-    with open(json_path) as json_file:
+    with open(json_path, "r", encoding="utf-8") as json_file:
         ascii_json = json.load(json_file)
     kabluki = ascii_json["kabluki"]
 
