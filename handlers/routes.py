@@ -49,13 +49,14 @@ def configure_routes(app):
         # Add other popular video formats as needed
         ALLOWED_EXTENSIONS = {'avi', 'flv', 'wmv', 'mov', 'mp4',
                               'm4v', 'mpeg', 'mpg', 'mkv', 'webm'}
-        allowed_file(ALLOWED_EXTENSIONS)
+        testing(ALLOWED_EXTENSIONS)
         return '.' in filename and filename.rsplit('.',
                                                    1)[1].lower(
                                                        ) in ALLOWED_EXTENSIONS
 
     @app.route('/test')
     def testing(ALLOWED_EXTENSIONS):
+        allowed_file()
         message = ""
         message += f"ALLOWED_EXTENSIONS: {ALLOWED_EXTENSIONS}"
         return message
