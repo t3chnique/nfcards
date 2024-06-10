@@ -48,10 +48,7 @@ def configure_routes(app):
     def example():
         return render_template('example.html')
 
-    def allowed_file(filename):
-        return '.' in filename and filename.rsplit('.', 1)[1].lower(
-            ) in ALLOWED_EXTENSIONS
-
+        '''
     @app.route('/upload', methods=['POST'])
     def upload_file():
         error_message = "<br>try shorter video or "
@@ -89,3 +86,4 @@ def configure_routes(app):
             # return redirect(url_for('play_video', filename=filename))
         else:
             return 'Invalid file type'
+        '''
