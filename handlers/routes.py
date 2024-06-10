@@ -85,7 +85,9 @@ def configure_routes(app):
             filename = current_date + file_type + str(uuid.uuid4()) + '.mp4'
             file.seek(0)  # Reset file pointer to the beginning before saving
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return "it works!"
+            message = ""
+            message += "it works!"
+            return message
             # redirect(url_for('congrats', filename=filename))
             # return redirect(url_for('play_video', filename=filename))
         else:
