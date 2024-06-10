@@ -1,7 +1,7 @@
 # import json
 import os
 import uuid
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect
 from datetime import datetime
 # from modules import modules
 
@@ -62,13 +62,10 @@ def configure_routes(app):
         if file.filename == '':
             return redirect(request.url)
         if file and allowed_file(file.filename):
-            # Calculate the total size of files in the uploads folder
-            total_folder_size = sum(os.path.getsize
-                                    (os.path.join(app.config[
-                                        'UPLOAD_FOLDER'], f))
-                                    for f in os.listdir
-                                    (app.config['UPLOAD_FOLDER']))
-            # Calculate the size of the new file
+            total_folder_size = sum(os.path.getsize(os.path.join(app.config[
+                'UPLOAD_FOLDER'], f))
+                                    for f in os.listdir(app.config[
+                                        'UPLOAD_FOLDER']))
             new_file_size = len(file.read())
             # Check if adding the new file exceeds the maximum folder size
             if total_folder_size + new_file_size > MAX_FOLDER_SIZE_BYTES:
