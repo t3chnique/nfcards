@@ -19,7 +19,8 @@ def configure_routes(app):
     json_path = os.path.join(os.path.dirname(__file__), 'data', 'ascii.json')
     with open(json_path, "r", encoding="utf-8") as json_file:
         ascii_json = json.load(json_file)
-    kabluki = ascii_json["kabluki"]
+    kabluki = ascii_json.get("kabluki", "Default Value")
+    # kabluki = ascii_json["kabluki"]
 
     @app.route('/')
     def index():
