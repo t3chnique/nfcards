@@ -14,30 +14,26 @@
             justify-content: center;
             background: #000; /* Dark background for better viewing */
         }
-        .video-container {
+        video {
             max-width: 95%; /* Restrict max width to avoid overscaling on very large screens */
             max-height: 95vh; /* Restrict max height to keep the video within viewport */
             border-radius: 8px; /* Slight rounding of corners for a modern look */
             box-shadow: 0 4px 8px rgba(0,0,0,0.5); /* Subtle shadow for a lifted effect */
-            position: relative;
-            width: 100%;
-            height: 0;
-            padding-bottom: 100%; /* Aspect ratio */
-            overflow: hidden;
         }
-        .video-container iframe {
-            border: none;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
+        /* Custom style for video controls */
+        video::-webkit-media-controls {
+            border-radius: 10px;
+        }
+        video::-webkit-media-controls-play-button,
+        video::-webkit-media-controls-panel {
+            color: white;
         }
     </style>
 </head>
 <body>
-    <div class="video-container">
-        <iframe allow="fullscreen;autoplay" allowfullscreen src="https://streamable.com/e/ry1die?autoplay=1&nocontrols=1"></iframe>
-    </div>
+    <video autoplay controls>
+        <source src="{{ url_for('static', filename='videos/margo.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 </body>
 </html>
