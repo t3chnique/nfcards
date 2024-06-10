@@ -40,3 +40,7 @@ def configure_routes(app):
                         "Folder size limit: "
                         f"{round(MAX_FOLDER_SIZE_BYTES/1000000/1000)} GB")
         return message
+
+    @app.route('/example', methods=['POST'])
+    def example():
+        return render_template('example.html')
