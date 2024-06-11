@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>nfcard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.39.0/web/lr-file-uploader-regular.min.css">
     <style>
         body {
             font-family: 'Courier New', monospace;
@@ -55,25 +56,34 @@
         .my-link:hover {
             color: red; /* Change color on hover */
         }
+        .uploader-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
     </style>
 </head>
 <body>
     <h1>nfcard</h1>
     <h3>Second Page</h3>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.39.0/web/lr-file-uploader-regular.min.css" >
-    <script type="module">
-    import * as LR from 'https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.39.0/web/lr-file-uploader-regular.min.js';
-    LR.registerBlocks(LR);
-    </script>
 
-    <lr-config
-    ctx-name="my-uploader"
-    pubkey="d3274ebb6033cdb9dd8e"
-    ></lr-config>
+    <div class="uploader-container">
+        <script type="module">
+            import * as LR from 'https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.39.0/web/lr-file-uploader-regular.min.js';
+            LR.registerBlocks(LR);
+        </script>
 
-    <lr-file-uploader-regular
-    ctx-name="my-uploader"
-    ></lr-file-uploader-regular>
+        <lr-config
+            ctx-name="my-uploader"
+            pubkey="d3274ebb6033cdb9dd8e"
+        ></lr-config>
+
+        <lr-file-uploader-regular
+            ctx-name="my-uploader"
+        ></lr-file-uploader-regular>
+    </div>
+
     <div style="text-align: center;">or you can</div>
     <form action="/example" method="POST"> 
         <button type="submit">View Example Video</button>
