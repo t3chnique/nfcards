@@ -31,6 +31,10 @@ def configure_routes(app):
     def index():
         return render_template('index.html', kabluki=kabluki)
 
+    @app.route('/2')
+    def index2():
+        return render_template('index2.html', kabluki=kabluki)
+
     @app.route('/status')
     def status():
         message = ""
