@@ -13,6 +13,11 @@
             padding: 20px;
             color: #333;
             line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
         h1, h3 {
             text-align: center;
@@ -38,8 +43,9 @@
             display: block;
             margin: 20px auto;
             transition: background-color 0.3s;
-            text-align: center; /* Ensure text is centered */
-            white-space: nowrap; /* Prevent text wrapping */
+            text-align: center;
+            white-space: nowrap;
+            width: fit-content;
         }
         button:hover {
             background-color: #555;
