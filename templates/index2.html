@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>nfcard</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.39.0/web/lr-file-uploader-regular.min.css">
     <style>
         body {
             font-family: 'Courier New', monospace;
@@ -13,11 +12,6 @@
             padding: 20px;
             color: #333;
             line-height: 1.6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            flex-direction: column;
         }
         h1, h3 {
             text-align: center;
@@ -66,19 +60,20 @@
 <body>
     <h1>nfcard</h1>
     <h3>Second Page</h3>
-
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.39.0/web/lr-file-uploader-regular.min.css" >
     <script type="module">
-        import * as LR from 'https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.39.0/web/lr-file-uploader-regular.min.js';
-        LR.registerBlocks(LR);
+    import * as LR from 'https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.39.0/web/lr-file-uploader-regular.min.js';
+    LR.registerBlocks(LR);
     </script>
 
     <lr-config
-        ctx-name="my-uploader"
-        pubkey="d3274ebb6033cdb9dd8e"
+    ctx-name="my-uploader"
+    pubkey="d3274ebb6033cdb9dd8e"
     ></lr-config>
 
     <lr-file-uploader-regular
-        ctx-name="my-uploader"
+    ctx-name="my-uploader"
     ></lr-file-uploader-regular>
 
     <div style="text-align: center;">or you can</div>
