@@ -14,10 +14,10 @@
             color: #333;
             line-height: 1.6;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
+            flex-direction: column;
         }
         h1, h3 {
             text-align: center;
@@ -43,9 +43,6 @@
             display: block;
             margin: 20px auto;
             transition: background-color 0.3s;
-            text-align: center;
-            white-space: nowrap;
-            width: fit-content;
         }
         button:hover {
             background-color: #555;
@@ -64,33 +61,25 @@
         .my-link:hover {
             color: red; /* Change color on hover */
         }
-        .uploader-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
     </style>
 </head>
 <body>
     <h1>nfcard</h1>
     <h3>Second Page</h3>
 
-    <div class="uploader-container">
-        <script type="module">
-            import * as LR from 'https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.39.0/web/lr-file-uploader-regular.min.js';
-            LR.registerBlocks(LR);
-        </script>
+    <script type="module">
+        import * as LR from 'https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.39.0/web/lr-file-uploader-regular.min.js';
+        LR.registerBlocks(LR);
+    </script>
 
-        <lr-config
-            ctx-name="my-uploader"
-            pubkey="d3274ebb6033cdb9dd8e"
-        ></lr-config>
+    <lr-config
+        ctx-name="my-uploader"
+        pubkey="d3274ebb6033cdb9dd8e"
+    ></lr-config>
 
-        <lr-file-uploader-regular
-            ctx-name="my-uploader"
-        ></lr-file-uploader-regular>
-    </div>
+    <lr-file-uploader-regular
+        ctx-name="my-uploader"
+    ></lr-file-uploader-regular>
 
     <div style="text-align: center;">or you can</div>
     <form action="/example" method="POST"> 
