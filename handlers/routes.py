@@ -31,9 +31,9 @@ def configure_routes(app):
     def index():
         return render_template('index.html', kabluki=kabluki)
 
-    @app.route('/2')
+    @app.route('/upload')
     def index2():
-        return render_template('index2.html', kabluki=kabluki)
+        return render_template('upload.html', kabluki=kabluki)
 
     @app.route('/3')
     def regular():
