@@ -86,27 +86,6 @@
     <div id="previews"></div>
     ###################
 
-    ###################
-    const providerNode = document.getElementById('my-uploader-provider');
-    const previewsNode = document.getElementById('previews');
-
-    providerNode.addEventListener('change', event => {
-    renderFiles(event.detail.allEntries.filter((file) => file.status === 'success'));
-    });
-
-    function renderFiles(files) {
-    const renderedFiles = files.map(file => {
-        const imgNode = document.createElement('img');
-        imgNode.setAttribute('src', file.cdnUrl);
-        imgNode.setAttribute('alt', file.fileInfo.originalFilename);
-
-        return imgNode;
-    });
-
-    previewsNode.replaceChildren(...renderedFiles);
-    }
-    ###################
-
     <div style="text-align: center;"></div>
     <form action="/" method="POST"> 
         <button type="submit">Go Back</button>
