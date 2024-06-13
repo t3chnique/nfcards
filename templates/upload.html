@@ -60,7 +60,7 @@
 <body>
     <h1>nfcard</h1>
     <h3>Upload Page</h3>
-    
+    ###################
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.39.0/web/lr-file-uploader-regular.min.css" >
     <script type="module">
     import * as LR from 'https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.39.0/web/lr-file-uploader-regular.min.js';
@@ -75,13 +75,37 @@
     <lr-file-uploader-regular
     ctx-name="my-uploader"
     ></lr-file-uploader-regular>
+    ###################
 
+    ###################
     <lr-upload-ctx-provider
     ctx-name="my-uploader"
     id="my-uploader-provider"
     ></lr-upload-ctx-provider>
 
     <div id="previews"></div>
+    ###################
+
+    ###################
+    const providerNode = document.getElementById('my-uploader-provider');
+    const previewsNode = document.getElementById('previews');
+
+    providerNode.addEventListener('change', event => {
+    renderFiles(event.detail.allEntries.filter((file) => file.status === 'success'));
+    });
+
+    function renderFiles(files) {
+    const renderedFiles = files.map(file => {
+        const imgNode = document.createElement('img');
+        imgNode.setAttribute('src', file.cdnUrl);
+        imgNode.setAttribute('alt', file.fileInfo.originalFilename);
+
+        return imgNode;
+    });
+
+    previewsNode.replaceChildren(...renderedFiles);
+    }
+    ###################
 
     <div style="text-align: center;"></div>
     <form action="/" method="POST"> 

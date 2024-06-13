@@ -31,6 +31,10 @@ def configure_routes(app):
     def index():
         return render_template('index.html', kabluki=kabluki)
 
+    @app.route('/', methods=['POST'])
+    def index_post():
+        return render_template('index.html', kabluki=kabluki)
+
     @app.route('/upload')
     def index2():
         return render_template('upload.html', kabluki=kabluki)
