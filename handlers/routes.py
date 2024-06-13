@@ -36,7 +36,8 @@ def configure_routes(app):
         return render_template('index.html', kabluki=kabluki)
 
     @app.route('/upload')
-    def index2():
+    @app.route('/upload', methods=['POST'])
+    def upload():
         return render_template('upload.html', kabluki=kabluki)
 
     @app.route('/3')
