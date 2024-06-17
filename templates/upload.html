@@ -61,25 +61,15 @@
     <h1>nfcard</h1>
     <h3>Upload Page</h3>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.39.0/web/lr-file-uploader-regular.min.css" >
-    <script type="module">
-    import * as LR from 'https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.39.0/web/lr-file-uploader-regular.min.js';
-    LR.registerBlocks(LR);
+    <script>
+        UPLOADCARE_PUBLIC_KEY = 'd3274ebb6033cdb9dd8e';
     </script>
+    <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
 
-    <lr-config
-    ctx-name="my-uploader"
-    pubkey="{{ pubkey }}"
-    ></lr-config>
-
-    <lr-file-uploader-regular
-    ctx-name="my-uploader"
-    ></lr-file-uploader-regular>
-
-    <lr-upload-ctx-provider
-    ctx-name="my-uploader"
-    id="my-uploader-provider"
-    ></lr-upload-ctx-provider>
+    <form id="upload-form">
+        <input type="hidden" role="uploadcare-uploader" data-public-key="d3274ebb6033cdb9dd8e" />
+        <button type="submit">Upload</button>
+    </form>
 
     <div id="previews"></div>
 
@@ -90,5 +80,19 @@
     <div class="ascii-art">
         {{ kabluki }} nfcard 2024 <a href="https://www.example.com" class="my-link" target="_blank">terms of service</a>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const widget = uploadcare.Widget('[role=uploadcare-uploader]');
+
+            widget.onUploadComplete(function(info) {
+                // Get the file URL
+                const fileUrl = info.cdnUrl;
+                console.log('File URL:', fileUrl);
+                // Display the file URL or use it as needed
+                document.getElementById('previews').innerHTML = `<a href="${fileUrl}">View uploaded file</a>`;
+            });
+        });
+    </script>
 </body>
 </html>
