@@ -60,8 +60,34 @@
 <body>
     <h1>nfcard</h1>
     <h3>Upload Video</h3>
-    <form action="/upload" method="POST">
-        <button type="submit">Upload</button>
+    <script>
+        UPLOADCARE_PUBLIC_KEY = "{{ pubkey }}";
+    </script>
+    <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
+
+    <form id="upload-form">
+        <input type="hidden" role="uploadcare-uploader" data-public-key="{{ pubkey }}" />
+    </form>
+
+    <div id="previews"></div>
+
+    <div style="text-align: center;"></div>
+    
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const widget = uploadcare.Widget('[role=uploadcare-uploader]');
+
+            widget.onUploadComplete(function(info) {
+                // Get the file URL
+                const fileUrl = info.cdnUrl;
+                console.log('File URL:', fileUrl);
+                // Display the file URL or use it as needed
+                document.getElementById('previews').innerHTML = `<a href="${fileUrl}">View uploaded file</a>`;
+            });
+        });
+    </script>
     </form>
     <div style="text-align: center;">or you can</div>
     <form action="/example" method="POST"> 

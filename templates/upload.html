@@ -73,20 +73,19 @@
     <h3>Upload Page</h3>
 
     <script>
-        UPLOADCARE_PUBLIC_KEY = 'd3274ebb6033cdb9dd8e';
+        UPLOADCARE_PUBLIC_KEY = "{{ pubkey }}";
     </script>
     <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
 
     <form id="upload-form">
-        <input type="hidden" role="uploadcare-uploader" data-public-key="d3274ebb6033cdb9dd8e" />
+        <input type="hidden" role="uploadcare-uploader" data-public-key="{{ pubkey }}" />
         <button type="submit">Upload</button>
     </form>
 
     <div id="previews"></div>
 
     <div style="text-align: center;"></div>
-    <form action="/" method="POST"> 
-        <button type="submit">Go Back</button>
+    <form action="/" method="POST">
     </form>
     <div class="ascii-art">
         {{ kabluki }} nfcard 2024 <a href="https://www.example.com" class="my-link" target="_blank">terms of service</a>
