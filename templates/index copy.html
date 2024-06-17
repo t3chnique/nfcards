@@ -12,11 +12,6 @@
             padding: 20px;
             color: #333;
             line-height: 1.6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
         }
         h1, h3 {
             text-align: center;
@@ -60,51 +55,20 @@
         .my-link:hover {
             color: red; /* Change color on hover */
         }
-        .uploadcare--widget__button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto;
-        }
     </style>
 </head>
 <body>
     <h1>nfcard</h1>
     <h3>Upload Video</h3>
-
-    <script>
-        UPLOADCARE_PUBLIC_KEY = "{{ pubkey }}";
-    </script>
-    <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
-
-    <form id="upload-form">
-        <input type="hidden" role="uploadcare-uploader" data-public-key="{{ pubkey }}" />
+    <form action="/upload" method="POST">
+        <button type="submit">Upload</button>
     </form>
-
-    <div id="previews"></div>
-
-    <div style="text-align: center;"></div>
-    <form action="/" method="POST">
-    </form>
+    <div style="text-align: center;">or you can</div>
     <form action="/example" method="POST"> 
         <button type="submit">View Example Video</button>
     </form>
     <div class="ascii-art">
         {{ kabluki }} nfcard 2024 <a href="https://www.example.com" class="my-link" target="_blank">terms of service</a>
     </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const widget = uploadcare.Widget('[role=uploadcare-uploader]');
-
-            widget.onUploadComplete(function(info) {
-                // Get the file URL
-                const fileUrl = info.cdnUrl;
-                console.log('File URL:', fileUrl);
-                // Display the file URL or use it as needed
-                document.getElementById('previews').innerHTML = `<a href="${fileUrl}">View uploaded file</a>`;
-            });
-        });
-    </script>
 </body>
 </html>
