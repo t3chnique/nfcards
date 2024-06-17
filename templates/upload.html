@@ -12,6 +12,11 @@
             padding: 20px;
             color: #333;
             line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
         }
         h1, h3 {
             text-align: center;
@@ -55,6 +60,12 @@
         .my-link:hover {
             color: red; /* Change color on hover */
         }
+        .uploadcare--widget__button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
@@ -62,12 +73,13 @@
     <h3>Upload Page</h3>
 
     <script>
-        UPLOADCARE_PUBLIC_KEY = "{{ pubkey }}";
+        UPLOADCARE_PUBLIC_KEY = 'd3274ebb6033cdb9dd8e';
     </script>
     <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
 
     <form id="upload-form">
-        <input type="hidden" role="uploadcare-uploader" data-public-key="{{ pubkey }}" />
+        <input type="hidden" role="uploadcare-uploader" data-public-key="d3274ebb6033cdb9dd8e" />
+        <button type="submit">Upload</button>
     </form>
 
     <div id="previews"></div>
