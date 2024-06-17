@@ -38,7 +38,8 @@ def configure_routes(app):
     @app.route('/upload')
     @app.route('/upload', methods=['POST'])
     def upload():
-        return render_template('upload.html', kabluki=kabluki)
+        pubkey = "d3274ebb6033cdb9dd8e"
+        return render_template('upload.html', kabluki=kabluki, pubkey=pubkey)
 
     @app.route('/3')
     def regular():
