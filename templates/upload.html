@@ -62,13 +62,12 @@
     <h3>Upload Page</h3>
 
     <script>
-        UPLOADCARE_PUBLIC_KEY = 'd3274ebb6033cdb9dd8e';
+        UPLOADCARE_PUBLIC_KEY = "{{ pubkey }}";
     </script>
     <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
 
     <form id="upload-form">
-        <input type="hidden" role="uploadcare-uploader" data-public-key="d3274ebb6033cdb9dd8e" />
-        <button type="submit">Upload</button>
+        <input type="hidden" role="uploadcare-uploader" data-public-key="{{ pubkey }}" />
     </form>
 
     <div id="previews"></div>
