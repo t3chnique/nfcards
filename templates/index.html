@@ -23,13 +23,13 @@
             color: #222;
         }
         .ascii-art {
-            white-space: pre-wrap; /* Ensures that whitespace is preserved */
-            font-family: 'Courier New', monospace; /* Consistent font for ASCII art */
-            font-size: 7px; /* Adjust size as needed for alignment */
-            line-height: normal; /* Avoid extra space between lines */
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            font-size: 7px;
+            line-height: normal;
             margin: 20px auto;
-            width: 90%; /* Adjust width as needed */
-            text-align: center; /* Align text to the left */
+            width: 90%;
+            text-align: center;
         }
         button {
             font-size: 16px;
@@ -53,18 +53,24 @@
             color: #333;
         }
         .my-link {
-            color: navy; /* Set the color of the link */
-            text-decoration: none; /* Remove underline */
-            font-size: 20px auto; /* Increase font size */
+            color: navy;
+            text-decoration: none;
+            font-size: 20px auto;
         }
         .my-link:hover {
-            color: red; /* Change color on hover */
+            color: red;
         }
         .uploadcare--widget__button {
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 0 auto;
+        }
+        #file-link {
+            margin-top: 20px;
+            font-size: 18px;
+            word-break: break-all;
+            text-align: center;
         }
     </style>
 </head>
@@ -79,7 +85,7 @@
         <input type="hidden" role="uploadcare-uploader" data-public-key="{{ pubkey }}" />
     </form>
 
-    <div id="previews"></div>
+    <div id="file-link"></div>
 
     <div style="text-align: center;"></div>
     <form action="/" method="POST">
@@ -100,8 +106,21 @@
                 // Get the file URL
                 const fileUrl = info.cdnUrl;
                 console.log('File URL:', fileUrl);
-                // Display the file URL or use it as needed
-                document.getElementById('previews').innerHTML = `<a href="${fileUrl}">View uploaded file</a>`;
+                
+                // Display the file link
+                const fileLinkElement = document.getElementById('file-link');
+                fileLinkElement.innerHTML = `Your file has been uploaded. Here's the link: <br><a href="${fileUrl}" target="_blank">${fileUrl}</a>`;
+                
+                // Add a copy button
+                const copyButton = document.createElement('button');
+                copyButton.textContent = 'Copy Link';
+                copyButton.onclick = function() {
+                    navigator.clipboard.writeText(fileUrl).then(function() {
+                        alert('Link copied to clipboard!');
+                    });
+                };
+                fileLinkElement.appendChild(document.createElement('br'));
+                fileLinkElement.appendChild(copyButton);
             });
         });
     </script>
